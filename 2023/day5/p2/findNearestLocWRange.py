@@ -63,9 +63,9 @@ for line in humiditiesToLocations:
 
 def transformOldRes(oldResNum, newToOldArr):
     for line in newToOldArr:
-        if line[1] <= oldResNum <= line[1]+line[2]:
-            offset = oldResNum - line[1]
-            return line[0]+offset
+        if line[0] <= oldResNum <= line[0]+line[2]:
+            offset = oldResNum - line[0]
+            return line[1]+offset
     return oldResNum
 
 
@@ -82,14 +82,6 @@ def findNearestLocation():
         seed = transformOldRes(soil, seedsToSoils)
         for line in seeds:
             if line[0] <= seed <= (line[0]+line[1]):
-                print(seed)
-                print(soil)
-                print(fertilizer)
-                print(water)
-                print(light)
-                print(temperature)
-                print(humidity)
-                print(location)
                 found = True
                 return location
         location += 1
